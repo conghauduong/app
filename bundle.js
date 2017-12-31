@@ -817,7 +817,7 @@ function updateProduct(product) {
 function deleteProduct(productId) {
     return function (dispatch) {
         console.log(productId);
-        fetch('https://backenda2.herokuapp.com/products' + productId, {
+        fetch('https://backenda2.herokuapp.com/products/' + productId, {
             method: 'delete'
         }).then(function (res) {
             return res.json();
@@ -830,26 +830,9 @@ function deleteProduct(productId) {
     };
 }
 
-function deleteCategory(categoryId) {
-    return function (dispatch) {
-        console.log(categoryId);
-        fetch('https://backenda2.herokuapp.com/categories/' + categoryId, {
-            method: 'delete'
-        }).then(function (res) {
-            return res.json();
-        }).then(function (data) {
-            console.log(data);
-            dispatch({ type: 'DELETE_CATEGORY', categoryId: categoryId });
-        }).then(function (data) {
-            return dispatch(fetchCategorys());
-        });
-    };
-}
-
-
 function editProduct(productId) {
     return function (dispatch) {
-        fetch('https://backenda2.herokuapp.com/products' + productId, {
+        fetch('https://backenda2.herokuapp.com/products/' + productId, {
             method: 'GET'
         }).then(function (res) {
             return res.json();
